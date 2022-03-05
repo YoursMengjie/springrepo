@@ -1,0 +1,21 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: edu-ad-boot
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.3.11:3306/edu_ad?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: Mmj@903830
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+      #是否需要将自己注册到注册中心（注册中心集群需要设置为true）
+      register-with-eureka: true
+      # 是否需要搜索服务信息 因为自己是注册中心所以为false
+      fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
